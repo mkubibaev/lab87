@@ -1,21 +1,42 @@
-import React, {Fragment} from 'react';
+import React, {Component, Fragment} from 'react';
 import Header from "./components/Header/Header";
 import {Switch, Route} from "react-router-dom";
+import {connect} from "react-redux";
 import Posts from "./containers/Posts/Posts";
 import Post from "./containers/Post/Post";
+import Login from "./containers/Login/Login";
+import Register from "./containers/Register/Register";
+import {logoutUser} from "./store/actions/usersActions";
 
-function App() {
-    return (
-        <Fragment>
-            <Header/>
-            <main className="container py-3">
-                <Switch>
-                    <Route path="/" exact component={Posts}/>
-                    <Route path="/posts/:id" component={Post}/>
-                </Switch>
-            </main>
-        </Fragment>
-    );
+class App extends Component {
+    render() {
+        return (
+            <Fragment>
+                <Header
+                    user={this.props.user}
+                    logout={this.props.logoutUser}
+                />
+                <main className="container py-3">
+                    <Switch>
+                        <Route path="/" exact component={Posts}/>
+                        <Route path="/login" component={Login}/>
+                        <Route path="/register" component={Register}/>
+                        {/*<Route path="/posts/new" exact component={}/>*/}
+                        <Route path="/posts/:id" component={Post}/>
+                    </Switch>
+                </main>
+            </Fragment>
+        );
+    }
+
 }
 
-export default App;
+const mapStateToProps = state => ({
+    user: state.users.user
+});
+
+const mapDispatchToProps = dispatch => ({
+    logoutUser: () => dispatch(logoutUser())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

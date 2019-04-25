@@ -18,9 +18,7 @@ code {
     display: flex;
     align-items: center;
     margin-bottom: 30px;
-    background: #fff;
-    border-radius: 2px;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    overflow: hidden;
 }
 
 .post-img {
@@ -46,10 +44,12 @@ code {
     margin: 0 auto 30px;
 }
 
-.comment {
-    background: #fff;
-    padding: 15px;
-    margin-bottom: 10px;
+.btn {
+    cursor: pointer;
+}
+
+.box {
     border-radius: 2px;
     box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    background: #fff;
 }

@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 
 const PostListItem = props => {
     return (
-        <div className="post">
+        <div className="post box">
             <NavLink to={`posts/${props.id}`} className="post-img">
                 {props.image
                     ? <img src={`${apiURL}/uploads/${props.image}`} alt={props.title}/>

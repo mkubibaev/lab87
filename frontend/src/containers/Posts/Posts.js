@@ -8,7 +8,6 @@ class Posts extends Component {
         this.props.fetchPosts();
     }
 
-
     render() {
         return (
             <div>

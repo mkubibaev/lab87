@@ -28,7 +28,7 @@ class Post extends Component {
                 />
 
                 <div className="comments mb-5">
-                    <h3>Comments:</h3>
+                    <h4>Comments:</h4>
                     {this.props.comments.map(comment => (
                         <Comment
                             key={comment._id}

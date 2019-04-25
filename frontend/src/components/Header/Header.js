@@ -8,11 +8,13 @@ const Header = props => {
 
             {props.user
                 ? <div>
-                    <NavLink to="/track-history" className="navbar-brand">Add post</NavLink>
+                    <span className="text-light mr-3">Hello, {props.user.fullName} </span>
+                    <NavLink to="/posts/new" className="btn btn-sm btn-outline-light mr-2">Add post</NavLink>
+                    <span onClick={props.logout} className="btn btn-sm btn-outline-light">Log out</span>
                 </div>
                 : <div>
-                    <NavLink to="/register" className="navbar-brand">Register</NavLink>
-                    <NavLink to="/login" className="navbar-brand">Login</NavLink>
+                    <NavLink to="/register" className="btn btn-sm btn-outline-light mr-2">Register</NavLink>
+                    <NavLink to="/login" className="btn btn-sm btn-outline-light">Login</NavLink>
                 </div>
             }
 
