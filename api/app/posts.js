@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const Post = require('../models/Post');
+const auth = require('../middleware/auth');
 
 router.get('/', async (req, res) => {
     try {
@@ -17,7 +18,24 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.post('/', auth, async (req, res) => {
+    if (req.body.description || req.body.image) {
 
+        const post = new Post(req.body);
+        post.user = req.user._id;
+        post.published_at = new Date().toISOString();
+
+        try {
+            await post.save();
+            return res.send(post);
+        } catch (e) {
+            return res.status(400).send(e);
+        }
+
+    } else {
+        res.status(400).send({message: 'Add description or image'});
+    }
+});
 
 
 module.exports = router;

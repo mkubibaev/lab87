@@ -14,7 +14,7 @@ const PostSchema = new Schema({
     },
     description: String,
     image: String,
-    datetime: {
+    published_at: {
         type: String,
         required: true
     }

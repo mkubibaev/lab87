@@ -26,14 +26,14 @@ const run = async () => {
             title: 'John McAfee Vows to Unmask Crypto’s Satoshi Nakamoto, Then Backs Off',
             description: 'John McAfee, the eccentric antivirus pioneer known for his brushes with the law, said he has spoken with Bitcoin creator Satoshi Nakamoto and plans to reveal the person’s identity.',
             image: 'john.jpeg',
-            datetime: '2019-04-25T10:00:00.765Z'
+            published_at: '2019-04-25T10:00:00.765Z'
         },
         {
             user: users[1]._id,
             title: 'Tips for Effective Data Visualization',
             description: 'Data visualization has a strong design element to it. Given the differences in domains, applications and audience it’s hard to put a structure around the best way to visualize your data.',
             image: 'tips.jpeg',
-            datetime: '2019-04-25T10:00:38.618Z'
+            published_at: '2019-04-25T10:00:38.618Z'
         }
     );
 
