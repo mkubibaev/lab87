@@ -2,8 +2,9 @@ import React from 'react';
 
 const Comment = props => {
     return (
-        <div>
-            comment text
+        <div className="comment">
+            <span className="text-muted">{props.user}: </span>
+            <span>{props.text}</span>
         </div>
     );
 };

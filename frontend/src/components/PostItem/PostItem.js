@@ -2,7 +2,7 @@ import React from 'react';
 import {apiURL} from "../../constants";
 
 const PostItem = props => (
-    <div className="mb-5">
+    <div className="full-post mb-5">
         <h3 className="mb-4 text-center">{props.title}</h3>
         {props.image
             ? <img src={`${apiURL}/uploads/${props.image}`} className="full-post-img" alt={props.title}/>

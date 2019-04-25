@@ -6,6 +6,7 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: #ecf0f5;
 }
 
 code {
@@ -17,6 +18,9 @@ code {
     display: flex;
     align-items: center;
     margin-bottom: 30px;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
 
 .post-img {
@@ -32,8 +36,20 @@ code {
     height: auto;
 }
 
+.post-text {
+    padding: 15px;
+}
+
 .full-post-img {
     display: block;
     max-width: 540px;
     margin: 0 auto 30px;
+}
+
+.comment {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
