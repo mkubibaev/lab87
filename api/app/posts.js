@@ -18,6 +18,18 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/:id', async (req, res) => {
+    try {
+        const post = await Post
+            .findById(req.params.id)
+            .populate({path: 'user', select: 'fullName'});
+
+        return res.send(post);
+    } catch {
+        return res.sendStatus(500)
+    }
+});
+
 router.post('/', auth, async (req, res) => {
     if (req.body.description || req.body.image) {
 
