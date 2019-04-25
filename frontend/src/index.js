@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
 import usersReducer from './store/reducers/usersReducer';
+import postsReducer from './store/reducers/postsReducer';
 
 const saveToLocalStorage = state => {
     try {
@@ -39,6 +40,7 @@ const history = createBrowserHistory();
 const rootReducer = combineReducers({
     router: connectRouter(history),
     users: usersReducer,
+    posts: postsReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
