@@ -1,9 +1,9 @@
 const express = require('express');
 
-const router = express.Router();
-
 const Post = require('../models/Post');
 const auth = require('../middleware/auth');
+
+const router = express.Router();
 
 router.get('/', async (req, res) => {
     try {
@@ -33,11 +33,13 @@ router.get('/:id', async (req, res) => {
 router.post('/', auth, async (req, res) => {
     if (req.body.description || req.body.image) {
 
-        const post = new Post(req.body);
-        post.user = req.user._id;
-        post.published_at = new Date().toISOString();
+        const postData = req.body;
+        postData.user = req.user._id;
+        postData.published_at = new Date().toISOString();
 
         try {
+            const post = new Post(postData);
+
             await post.save();
             return res.send(post);
         } catch (e) {
@@ -48,6 +50,5 @@ router.post('/', auth, async (req, res) => {
         res.status(400).send({message: 'Add description or image'});
     }
 });
-
 
 module.exports = router;
