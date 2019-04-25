@@ -25,6 +25,7 @@ router.get('/', async (req, res) => {
         const posts = await Post
             .find()
             .select(['user', 'title', 'image', 'published_at'])
+            .sort({published_at: -1})
             .populate({path: 'user', select: 'fullName'});
 
         return res.send(posts);

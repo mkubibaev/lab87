@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {fetchPosts} from "../../store/actions/postsActions";
 import {connect} from "react-redux";
-import Post from "../../components/Post/Post";
+import PostListItem from "../../components/PostListItem/PostListItem";
 
 class Posts extends Component {
     componentDidMount() {
@@ -10,16 +10,14 @@ class Posts extends Component {
 
 
     render() {
-        console.log(this.props.posts);
-
         return (
             <div>
-                <h2 className="mb-3">Posts</h2>
+                <h2 className="mb-4">Posts</h2>
                 {this.props.posts.map(post => {
                     const published_at = new Date(post.published_at).toLocaleString('ru-Ru');
 
                     return (
-                        <Post
+                        <PostListItem
                             key={post._id}
                             id={post._id}
                             image={post.image}

@@ -2,7 +2,7 @@ import React from 'react';
 import {apiURL} from "../../constants";
 import {NavLink} from "react-router-dom";
 
-const Post = props => {
+const PostListItem = props => {
     return (
         <div className="post">
             <NavLink to={`posts/${props.id}`} className="post-img">
@@ -20,4 +20,4 @@ const Post = props => {
     );
 };
 
-export default Post;
+export default PostListItem;

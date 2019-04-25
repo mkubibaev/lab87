@@ -31,3 +31,9 @@ code {
     width: 100%;
     height: auto;
 }
+
+.full-post-img {
+    display: block;
+    max-width: 540px;
+    margin: 0 auto 30px;
+}
