@@ -67,7 +67,7 @@ router.post('/', [auth, upload.single('image')], async (req, res) => {
         }
 
     } else {
-        return res.status(400).send({message: 'Add description or image'});
+        return res.status(400).send({error: 'Add description or image!'});
     }
 });
 

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {fetchPosts} from "../../store/actions/postsActions";
 import {connect} from "react-redux";
 import PostListItem from "../../components/PostListItem/PostListItem";
+import Loader from "../../components/UI/Loader/Loader";
 
 class Posts extends Component {
     componentDidMount() {
@@ -12,6 +13,9 @@ class Posts extends Component {
         return (
             <div>
                 <h2 className="mb-4">Posts</h2>
+
+                {this.props.loading && <Loader/>}
+
                 {this.props.posts.map(post => {
                     const published_at = new Date(post.published_at).toLocaleString('ru-Ru');
 

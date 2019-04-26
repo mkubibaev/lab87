@@ -29,7 +29,7 @@ router.post('/', auth, async (req, res) => {
         const comment = new Comment(commentData);
 
         await comment.save();
-        return res.send(comment);
+        return res.send({message: 'Comment added', comment});
     } catch (e) {
         return res.status(400).send(e);
     }

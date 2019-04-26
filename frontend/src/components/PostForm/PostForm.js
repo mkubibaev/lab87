@@ -20,6 +20,15 @@ class PostForm extends Component {
         })
     };
 
+    getFieldHasError = fieldName => {
+        return (
+            this.props.error &&
+            this.props.error.errors &&
+            this.props.error.errors[fieldName] &&
+            this.props.error.errors[fieldName].message
+        );
+    };
+
     submitFormHandler = event => {
         event.preventDefault();
 
@@ -31,7 +40,7 @@ class PostForm extends Component {
             }
         });
 
-        this.props.onAdd(formData)
+        this.props.addPost(formData)
     };
 
 
@@ -39,6 +48,13 @@ class PostForm extends Component {
         return (
             <Fragment>
                 <h2 className="mb-4">Add new post</h2>
+
+                {this.props.error && this.props.error.error && (
+                    <div className="alert alert-danger">
+                        {this.props.error.error}
+                    </div>
+                )}
+
                 <form onSubmit={this.submitFormHandler}>
                     <FormElement
                         propertyName="title"
@@ -46,6 +62,7 @@ class PostForm extends Component {
                         type="text"
                         value={this.state.title}
                         onChange={this.inputChangeHandler}
+                        error={this.getFieldHasError('title')}
                         placeholder="Enter post title"
                     />
 

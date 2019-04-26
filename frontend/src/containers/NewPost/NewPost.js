@@ -7,13 +7,18 @@ class NewPost extends Component {
 
     render() {
         return <PostForm
-            onAdd={this.props.addPost}
+            addPost={this.props.addPost}
+            error={this.props.error}
         />
     }
 }
+
+const mapStateToProps = state => ({
+    error: state.posts.error
+});
 
 const mapDispatchToProps = dispatch => ({
     addPost: postData => dispatch(addPost(postData))
 });
 
-export default connect(null, mapDispatchToProps)(NewPost);
+export default connect(mapStateToProps, mapDispatchToProps)(NewPost);

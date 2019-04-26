@@ -60,7 +60,7 @@ export const addPost = postData => {
             NotificationManager.success(response.data.message);
             dispatch(push('/'))
         } catch (e) {
-            dispatch(addDataFailure(e));
+            dispatch(addDataFailure(e.response.data));
         }
     }
 };
