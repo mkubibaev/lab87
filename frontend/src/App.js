@@ -6,10 +6,11 @@ import {NotificationContainer} from "react-notifications";
 
 import {logoutUser} from "./store/actions/usersActions";
 
-import Posts from "./containers/Posts/Posts";
-import Post from "./containers/Post/Post";
 import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Register";
+import Posts from "./containers/Posts/Posts";
+import Post from "./containers/Post/Post";
+import NewPost from "./containers/NewPost/NewPost";
 
 class App extends Component {
     render() {
@@ -25,7 +26,7 @@ class App extends Component {
                         <Route path="/" exact component={Posts}/>
                         <Route path="/login" component={Login}/>
                         <Route path="/register" component={Register}/>
-                        {/*<Route path="/posts/new" exact component={}/>*/}
+                        <Route path="/posts/new" exact component={NewPost}/>
                         <Route path="/posts/:id" component={Post}/>
                     </Switch>
                 </main>

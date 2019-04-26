@@ -1,8 +1,21 @@
 import axios from '../../axios-api';
-import {FETCH_DATA_FAILURE, FETCH_DATA_REQUEST, FETCH_POST_SUCCESS, FETCH_POSTS_SUCCESS} from "./actionTypes";
+import {push} from 'connected-react-router';
+import {NotificationManager} from 'react-notifications';
+import {
+    ADD_DATA_FAILURE,
+    ADD_DATA_REQUEST, ADD_DATA_SUCCESS,
+    FETCH_DATA_FAILURE,
+    FETCH_DATA_REQUEST,
+    FETCH_POST_SUCCESS,
+    FETCH_POSTS_SUCCESS
+} from "./actionTypes";
 
 const fetchDataRequest = () => ({type: FETCH_DATA_REQUEST});
 const fetchDataFailure = error => ({type: FETCH_DATA_FAILURE, error});
+
+const addDataRequest = () => ({type: ADD_DATA_REQUEST});
+const addDataFailure = error => ({type: ADD_DATA_FAILURE, error});
+const addDataSuccess = () => ({type: ADD_DATA_SUCCESS});
 
 const fetchPostsSuccess = posts => ({type: FETCH_POSTS_SUCCESS, posts});
 const fetchPostSuccess = post => ({type: FETCH_POST_SUCCESS, post});
@@ -29,6 +42,25 @@ export const fetchPost = id => {
             dispatch(fetchPostSuccess(response.data));
         } catch (e) {
             dispatch(fetchDataFailure(e));
+        }
+    }
+};
+
+export const addPost = postData => {
+    return async (dispatch, getState) => {
+        const token = getState().users.user.token;
+        const config = {headers: {'Authorization': token}};
+
+        dispatch(addDataRequest());
+
+        try {
+            const response = await axios.post('/posts', postData, config);
+
+            dispatch(addDataSuccess());
+            NotificationManager.success(response.data.message);
+            dispatch(push('/'))
+        } catch (e) {
+            dispatch(addDataFailure(e));
         }
     }
 };

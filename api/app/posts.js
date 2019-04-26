@@ -61,7 +61,7 @@ router.post('/', [auth, upload.single('image')], async (req, res) => {
             const post = new Post(postData);
 
             await post.save();
-            return res.send(post);
+            return res.send({message: 'Post added', post});
         } catch (e) {
             return res.status(400).send(e);
         }

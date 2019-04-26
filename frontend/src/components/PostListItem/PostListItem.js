@@ -1,6 +1,7 @@
 import React from 'react';
 import {apiURL} from "../../constants";
 import {NavLink} from "react-router-dom";
+import textIcon from "../../assets/images/text-icon.png";
 
 const PostListItem = props => {
     return (
@@ -8,7 +9,7 @@ const PostListItem = props => {
             <NavLink to={`posts/${props.id}`} className="post-img">
                 {props.image
                     ? <img src={`${apiURL}/uploads/${props.image}`} alt={props.title}/>
-                    : null
+                    : <img src={textIcon} alt=""/>
                 }
             </NavLink>
             <div className="post-text">
