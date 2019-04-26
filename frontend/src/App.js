@@ -2,16 +2,20 @@ import React, {Component, Fragment} from 'react';
 import Header from "./components/Header/Header";
 import {Switch, Route} from "react-router-dom";
 import {connect} from "react-redux";
+import {NotificationContainer} from "react-notifications";
+
+import {logoutUser} from "./store/actions/usersActions";
+
 import Posts from "./containers/Posts/Posts";
 import Post from "./containers/Post/Post";
 import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Register";
-import {logoutUser} from "./store/actions/usersActions";
 
 class App extends Component {
     render() {
         return (
             <Fragment>
+                <NotificationContainer/>
                 <Header
                     user={this.props.user}
                     logout={this.props.logoutUser}

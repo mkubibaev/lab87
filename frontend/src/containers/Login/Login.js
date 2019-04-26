@@ -24,6 +24,11 @@ class Login extends Component {
         return (
             <Fragment>
                 <h2 className="text-center mb-3">Login</h2>
+                {this.props.error && (
+                        <div className="alert alert-danger">
+                            {this.props.error.message || this.props.error.global}
+                        </div>
+                )}
                 <form onSubmit={this.submitFormHandler}>
                     <FormElement
                         propertyName="login"
@@ -55,7 +60,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-    error: state.loginError
+    error: state.users.loginError
 });
 
 const mapDispatchToProps = dispatch => ({
